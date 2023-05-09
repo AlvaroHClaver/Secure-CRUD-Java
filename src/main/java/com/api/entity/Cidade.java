@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 public class Cidade {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.SEQUENCE)
   private Integer id;
   
   private String nome;

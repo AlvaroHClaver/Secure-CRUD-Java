@@ -84,14 +84,14 @@ public class ContaController {
   }
 
   @PutMapping("/{id}")
-  public ResponseEntity<Conta> updateSaldo(@PathVariable(value="id")Integer id,@RequestParam(value="saldo")double saldo){
+  public ResponseEntity<Conta> updateSaldo(@PathVariable(value="id")Integer id,@RequestBody Conta updatedConta){
     
     try{
       Optional<Conta> conta=repository.findById(id);
 
     if(conta.isPresent()){
       Conta aux=conta.get();
-      aux.setSaldo(saldo);
+      aux.setSaldo(updatedConta.getSaldo());
       return new ResponseEntity<Conta>(repository.save(aux), HttpStatus.OK);
 
     }else{

@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 public class Conta {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.SEQUENCE)
   private Integer id;
 
   private String titular;

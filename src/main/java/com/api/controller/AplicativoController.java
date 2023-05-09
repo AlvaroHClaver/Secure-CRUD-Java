@@ -84,14 +84,14 @@ public class AplicativoController {
   }
 
   @PutMapping("/{id}")
-  public ResponseEntity<Aplicativo> updateSaldo(@PathVariable(value="id")Integer id,@RequestParam(value="downloads")int downloads){
+  public ResponseEntity<Aplicativo> updateSaldo(@PathVariable(value="id")Integer id,@RequestBody Aplicativo updatedApp){
     
     try{
       Optional<Aplicativo> conta=repository.findById(id);
 
     if(conta.isPresent()){
       Aplicativo aux=conta.get();
-      aux.setNroDownloads(downloads);
+      aux.setNroDownloads(updatedApp.getNroDownloads());
       return new ResponseEntity<Aplicativo>(repository.save(aux), HttpStatus.OK);
 
     }else{

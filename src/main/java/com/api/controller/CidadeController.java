@@ -83,14 +83,14 @@ public class CidadeController {
   }
 
   @PutMapping("/{id}")
-  public ResponseEntity<Cidade> updateSaldo(@PathVariable(value="id")Integer id,@RequestParam(value="pubAlvo")int pubAlvo){
+  public ResponseEntity<Cidade> updateSaldo(@PathVariable(value="id")Integer id,@RequestBody Cidade updatedCidade){
     
     try{
       Optional<Cidade> cidade=repository.findById(id);
 
     if(cidade.isPresent()){
       Cidade aux=cidade.get();
-      aux.setPubAlvo(pubAlvo);
+      aux.setPubAlvo(updatedCidade.getPubAlvo());
       return new ResponseEntity<Cidade>(repository.save(aux), HttpStatus.OK);
 
     }else{

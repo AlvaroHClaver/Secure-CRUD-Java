@@ -45,7 +45,7 @@ public class Configs {
       
     http.cors(Customizer.withDefaults()).csrf().disable()//passa o método cors para liberar as requisições de aplicações externas
     .authorizeHttpRequests()
-    .requestMatchers("/login","/register")//define as rotas que não necessitam de informar o token
+    .requestMatchers("/login","/register","/swagger-ui/**","/v3/api-docs/**")//define as rotas que não necessitam de informar o token
     .permitAll()
     .anyRequest()//qualquer outra requisição deve ser autenticada
     .authenticated()

@@ -18,6 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.api.entity.Cidade;
 import com.api.repository.CidadeRepository;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+
+@Tag(name="Cidades",description="Gerenciamento das Cidades")
 @RestController
 @RequestMapping("/api/cidade")
 public class CidadeController {

@@ -13,6 +13,9 @@ import com.api.dto.Login;
 import com.api.entity.User;
 import com.api.service.TokenService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+
+@Tag(name="Autenticador",description="Autenticação dos Usuários Cadastrados")
 @RestController
 public class AuthController {
 

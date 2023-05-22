@@ -1,7 +1,7 @@
 package com.api.filter;
 
 import java.io.IOException;
-
+import com.api.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -35,16 +35,16 @@ public class FilterToken extends OncePerRequestFilter {
       throws ServletException, IOException {
 
         String token;
-        var authorizarion=request.getHeader("Authorization");
+        String authorizarion=request.getHeader("Authorization");
 
         if(authorizarion!=null){
-          token=authorizarion.replace("Bearer ", "");//remove berare do token retornado
+          token=authorizarion.replace("Bearer ", "");//remove bearer do token retornado
 
-          var subject=this.tokenService.getSubject(token);//extrai o username do token
+          String subject=this.tokenService.getSubject(token);//extrai o username do token
 
-          var usuario=this.repository.findByLogin(subject);//busca o usurio extraido do token e verifica se o mesmo existe no banco
+          User usuario=this.repository.findByLogin(subject);//busca o usurio extraido do token e verifica se o mesmo existe no banco
 
-          var autenticação=new UsernamePasswordAuthenticationToken(usuario,null,usuario.getAuthorities()); //autentiva o usuario
+          UsernamePasswordAuthenticationToken autenticação=new UsernamePasswordAuthenticationToken(usuario,null,usuario.getAuthorities()); //autentiva o usuario
 
           SecurityContextHolder.getContext().setAuthentication(autenticação);// altera o estado do security context holder
         }

@@ -18,6 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.api.entity.Aplicativo;
 import com.api.repository.AplicativoRepository;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+
+@Tag(name="Aplicativos",description="Gerenciamento dos Aplicativos")
 @RestController
 @RequestMapping("/api/apps")
 public class AplicativoController {

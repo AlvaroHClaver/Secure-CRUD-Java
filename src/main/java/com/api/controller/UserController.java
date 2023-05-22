@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.api.entity.User;
 import com.api.repository.UserRepository;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+
+@Tag(name="Usuários",description="Cadastro dos Usuários")
 @RestController
 public class UserController {
 
